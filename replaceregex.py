@@ -24,14 +24,16 @@ class ReplaceRegex(QDialog):
         QDialog.__init__(self, None, Qt.Window)
         self.mw = mw
         #self.form = replaceregex.form.UI_Dialog()
-        self.ui = uic.loadUi('replace-regex/form.ui', self)
+        self.ui = uic.loadUi('replaceregex/form.ui', self)
         self.connect(self, SIGNAL("rejected()"), self.onReject)
         self.connect(self.ui.buttonBox, SIGNAL("accepted()"), self.onAccept)
     def onReject(self):
         print("Rejected")
         return True
     def onAccept(self):
-        print("Accepted")
+        print("Field: " + self.ui.fieldEdit.text())
+        print("Search: " + self.ui.searchEdit.toPlainText())
+        print("Replace: " + self.ui.replaceEdit.toPlainText())
         return True
 
 
